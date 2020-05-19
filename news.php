@@ -22,23 +22,25 @@
 	<main class="container mt-5">
 		<div class="row">
 			<div class="col-md-8 mb-3">
-				<div class="jumbotron">
-					<h1><?=$article->title?></h1>
-					<p><b>Автор сатьи:</b><mark><?=$article->avtor?></mark></p>
-					<?php
-						$date = date('d ', $article->date);
-						$array = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',
-						'сентября', 'октября', 'ноября', 'декабря'];
-						$date .= $array[date(' n' , $article->date) - 1];
-						$date .= date(' H:i', $article->date);
-					?>
-					<p><b>Время публикации:</b> <u><?=$date?></u></p>
-					<p>
-						<?=$article->intro?>
-						<br><br>
-						<?=$article->text?>
-					</p>
-					
+				<div class='card mb-4 shadow-sm'>
+					<img width='728' height='600' src='<?=$article->image?>'>
+					<div class='card-body'>
+						<h1><?=$article->title?></h1>
+						<p><b>Автор сатьи:</b><mark><?=$article->avtor?></mark></p>
+						<?php
+							$date = date('d ', $article->date);
+							$array = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа',
+							'сентября', 'октября', 'ноября', 'декабря'];
+							$date .= $array[date(' n' , $article->date) - 1];
+							$date .= date(' H:i', $article->date);
+						?>
+						<p><b>Время публикации:</b> <u><?=$date?></u></p>
+						<p>
+							<?=$article->intro?>
+							<br><br>
+							<?=$article->text?>
+						</p>
+					</div>
 				</div>
 				<h3 class="mt-5">Комментарии</h3>
 				<form action="news.php?id=<?=$_GET['id']?>" method="post">
@@ -48,7 +50,7 @@
 					<label for="mess">Сообщение</label>
 					<textarea name="mess" id="mess" class="form-control"></textarea> 
 
-					<div class="alert alert-danger mt-2" id="errorBlock">s</div>
+					<div class="alert alert-danger mt-2 mb-3" id="errorBlock">s</div>
 
 					<button type="submit" id="mess_send" class="btn btn-success mt-3">
 						Добавить комментарий
@@ -57,7 +59,7 @@
 				<?php
 					if ($_POST['username'] != '' && $_POST['mess'] != '') {
 						$username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
-						$mess = trim(filter_var($_POST['mess'], FILTER_SANITIZE_EMAIL));
+						$mess = trim(filter_var($_POST['mess'], FILTER_SANITIZE_STRING));
 
 						$sql = 'INSERT INTO comments(name, mess, article_id) VALUES(?, ?, ?)';
 						$query = $pdo->prepare($sql);
@@ -70,16 +72,18 @@
 					$comments = $query->fetchALL(PDO::FETCH_OBJ);
 
 					foreach ($comments as $comment) {
-						echo "<div class='alert alert-info mb-3'>
+						echo "<div class='alert alert-info mb-3 mt-2'>
 							<h4>$comment->name</h4>
 							<p>$comment->mess</p>
 						</div>";
 					}
 				?>
 			</div>
-			<?php require 'blocks/aside.php';?>
 		</div>
 	</main>
 	<?php require 'blocks/footer.php';?>
 </body>
 </html>
+
+
+
