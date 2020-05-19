@@ -31,6 +31,10 @@
 					<label for="text">Текст статьи</label>
 					<textarea name="text" id="text" class="form-control"></textarea>
 
+					<label for="image">Ссылка на изображение</label>
+					<textarea type="text"  id="image" class="form-control"></textarea> 
+
+
 					<div class="alert alert-danger mt-2" id="errorBlock">s</div>
 
 					<button type="button" id="article_send" class="btn btn-success mt-3">
@@ -45,12 +49,13 @@
 			var title = $('#title').val();
 			var intro = $('#intro').val();
 			var text = $('#text').val();
+			var image = $('#image').val();
 
 			$.ajax({
 				url: 'ajax/add_article.php',
 				type: 'POST',
 				cache: false,
-				data: {'title' : title, 'intro' : intro, 'text' : text},
+				data: {'title' : title, 'intro' : intro, 'text' : text, 'image' : image},
 				dataType: 'html',
 				success: function(data) {
 					if (data == 'Готово') {

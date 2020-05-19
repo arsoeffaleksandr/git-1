@@ -12,7 +12,7 @@
 	$article = $query->fetch(PDO::FETCH_OBJ);
 
 	$website_title = $article->title;	
-	require 'head.php';
+	require 'blocks/head.php';
 
 ?>
 </head>

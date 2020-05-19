@@ -2,6 +2,7 @@
 	$title = trim(filter_var($_POST['title'], FILTER_SANITIZE_STRING));
 	$intro = trim(filter_var($_POST['intro'], FILTER_SANITIZE_STRING));
 	$text = trim($_POST['text']);
+	$image = trim($_POST['image']);
 
 	$error = '';
 
@@ -19,9 +20,10 @@
 
     require '../mysql_connect.php';
 
-	$sql = 'INSERT INTO articles(title, intro, text, date, avtor) VALUES(?, ?, ?, ?, ?)';
+	$sql = 'INSERT INTO articles(title, intro, text, date, avtor, image) VALUES(?, ?, ?, ?, ?, ?)';
 	$query = $pdo->prepare($sql);
-	$query->execute([$title, $intro, $text, time(), $_COOKIE['login']]);
+	$query->execute([$title, $intro, $text, time(), $_COOKIE['login'], $image]);
+
 
 	echo "Готово";
 ?>
