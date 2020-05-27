@@ -31,7 +31,7 @@
 							        <div class='col p-4 d-flex flex-column position-static'>
 							          <h3 class='mb-0'>$row->title</h3>
 							          <div class='mb-1 text-muted'>$date</div>
-							          <p class='card-text mb-auto'>$row->intro.</p>
+							          <p class='card-text mb-auto'>$row->intro...</p>
 							          <a href='news.php?id=$row->id' title='$row->title' class='stretched-link'>Прочитать больше</a>
 							        </div>
 							        <div class='col-auto d-none d-lg-block'>

@@ -23,7 +23,7 @@
             while ($row = $query->fetch(PDO::FETCH_OBJ)) {
               echo "<div class='col-md-6'>
                       <div class='card mb-4 shadow-sm'>
-                        <img width='537' height='400' src='$row->image'>
+                        <img width='auto' height='400' src='$row->image'>
                         <div class='card-body'>
                           <p class='card-text'>
                           <h3>$row->name</h3>
@@ -75,6 +75,3 @@
 
 </body>
 </html>
-<a href='news.php?id=$row->id' title='$row->title'>
-  <button type='button' class='btn btn-sm btn-outline-secondary'>Подробнее</button>
-</a>";

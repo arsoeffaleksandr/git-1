@@ -31,7 +31,7 @@
                           </p>
                           <div class='d-flex justify-content-between align-items-center'>
                             <div class='btn-group'>
-                              <button type='button' class='btn btn-sm btn-outline-secondary'>Добавить в корзину</button>
+                              <button type='button' class='btn btn-sm btn-outline-secondary' id="add-to-cart">Добавить в корзину</button>
                             </div>
                             <small class='text-muted'>Цена:<?=$products->price?></small>
                           </div>
@@ -78,5 +78,32 @@
 				?>
 			</div>
 	</main>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+		$('#add-to-cart').click(function () {
+			var image = <?php echo json_encode($products->image);?>;
+			var name = <?php echo json_encode($products->name);?>;
+			var description = <?php echo json_encode($products->description);?>;
+			var price = <?php echo json_encode($products->price);?>;
+
+			$.ajax({
+				url: 'ajax/add_product.php',
+				type: 'POST',
+				cache: false,
+				data: {'image' : image, 'name' : name, 'price' : price},
+				dataType: 'html',
+				success: function(data) {
+					if (data == 'Готово') {
+						$('#add-to-cart').text('Все готово');
+						$('#errorBlock').hide();
+					}
+					else {
+						$('#errorBlock').show();
+						$('#errorBlock').text(data);
+					}
+				}
+			});
+		});
+	</script>
 </body>
 </html>
