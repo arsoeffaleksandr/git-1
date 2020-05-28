@@ -61,7 +61,7 @@
 
 						$sql = 'INSERT INTO comments(name, mess, article_id) VALUES(?, ?, ?)';
 						$query = $pdo->prepare($sql);
-						$query->execute([$username, $mess, $_GET['id']]);
+						$query->execute([$sql]);
 					}
 
 					$sql = 'SELECT * FROM `comments` WHERE `article_id` = :id ORDER BY `id` DESC';
@@ -81,6 +81,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
 		$('#add-to-cart').click(function () {
+			var id = <?php echo json_encode($products->id);?>;
 			var image = <?php echo json_encode($products->image);?>;
 			var name = <?php echo json_encode($products->name);?>;
 			var description = <?php echo json_encode($products->description);?>;
@@ -90,7 +91,7 @@
 				url: 'ajax/add_product.php',
 				type: 'POST',
 				cache: false,
-				data: {'image' : image, 'name' : name, 'price' : price},
+				data: {'id' : id, 'image' : image, 'name' : name, 'price' : price},
 				dataType: 'html',
 				success: function(data) {
 					if (data == 'Готово') {
