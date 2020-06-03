@@ -2,12 +2,24 @@
   <h5 class="my-0 mr-md-auto font-weight-normal">Company name</h5>
   <nav class="my-2 my-md-0 mr-md-3">
     <a class="p-2 text-dark" href="/">Главная</a>
-    <a class="p-2 text-dark" href="/goods.php">Товары</a>
+    <div class="btn-group">
+      <a type="button" href="/goods.php?all" class="btn btn-danger">Товары</a>
+      <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/goods.php?dio=3">android</a>
+        <a class="dropdown-item" href="/goods.php?jojo=4">apple</a>
+        <a class="dropdown-item" href="/goods.php?all">Все</a>
+        <div class="dropdown-divider"></div>
+      </div>
+    </div>
     <a class="p-2 text-dark" href="/cart.php" >
       <img src="img/cart.svg">
       <span class="badge">0
                   </span>
     </a>
+  </nav>
   <?php
         if ($_COOKIE['login'] == '') :
   ?>
@@ -23,3 +35,4 @@
   ?>
   <
 </div>
+

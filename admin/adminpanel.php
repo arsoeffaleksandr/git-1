@@ -24,6 +24,9 @@
 			<div class="col-md-8 mb-3">
 				<h4>Добавление товара</h4>
 				<form action="" method="post">
+					<label for="text">категория</label>
+					<textarea name="text" id="category_id" class="form-control"></textarea>
+
 					<label for="title">Название</label>
 					<input type="text" name="title" id="name" class="form-control">
 
@@ -47,6 +50,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script>
 		$('#article_send').click(function () {
+			var category_id = $('#category_id').val();
 			var name = $('#name').val();
 			var description = $('#description').val();
 			var price = $('#price').val();
@@ -55,7 +59,7 @@
 				url: '../admin/adminavt.php',
 				type: 'POST',
 				cache: false,
-				data: {'name' : name, 'description' : description, 'price' : price, 'image' : image},
+				data: {'category_id' : category_id, 'name' : name, 'description' : description, 'price' : price, 'image' : image},
 				dataType: 'html',
 				success: function(data) {
 					if (data == 'Готово') {

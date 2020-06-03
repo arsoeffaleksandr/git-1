@@ -36,9 +36,9 @@
 					$sql = 'SELECT * FROM `cart` ORDER BY `id` DESC';
 					$query = $pdo->query($sql);
 					while ($row = $query->fetch(PDO::FETCH_OBJ)) {
-						echo "<div class='col-md-6'>
+						echo "<div class='col-md-3'>
 			                      <div class='card mb-4 shadow-sm'>
-			                        <img width='auto' height='400' src='$row->image'>
+			                        <img width='auto' height='250' src='$row->image'>
 			                        <div class='card-body'>
 			                          <p class='card-text'>
 			                          <h3>$row->name</h3>

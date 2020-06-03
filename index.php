@@ -25,8 +25,8 @@
 						'сентября', 'октября', 'ноября', 'декабря'];
 						$date .= $array[date(' n' , $row->date) - 1];
 						$date .= date(' H:i', $row->date);
-						echo "
-								<div class='col-md-6'>
+						echo "<div class='container'>
+								<div class='col-md-8'>
 							      <div class='row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
 							        <div class='col p-4 d-flex flex-column position-static'>
 							          <h3 class='mb-0'>$row->title</h3>
@@ -38,7 +38,8 @@
 							          <img src ='$row->image' class='bd-placeholder-img' width='200' height='200' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice' focusable='false' role='img' aria-label='Placeholder: Thumbnail'><title>Placeholder</title><rect width='100%' height='100%' fill='#55595c'></rect>
 							        </div>
 							      </div>
-							    </div>";
+							    </div>
+						      </div>";
 					}
 				?>
 			</div>
