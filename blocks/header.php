@@ -20,6 +20,10 @@
                   </span>
     </a>
   </nav>
+  <form class="form-inline" method="post" action="search.php">
+      <input class="form-control mr-sm-2" type="search" name="search_q" placeholder="Поиск" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+  </form>
   <?php
         if ($_COOKIE['login'] == '') :
   ?>
